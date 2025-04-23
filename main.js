@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { transform: 'scale(1)' },
                 { transform: 'scale(1.05)' }
             ], {
-                duration: 300,
+                duration: 200,
                 fill: 'forwards',
                 easing: 'ease-out'
             });
