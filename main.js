@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Elementos del DOM
+
     const pokemonGallery = document.getElementById('pokemon-gallery');
     const pokemonNameInput = document.getElementById('pokemon-name');
     const pokemonImageInput = document.getElementById('pokemon-image');
     const addPokemonButton = document.getElementById('add-pokemon');
 
-    // Imágenes predeterminadas de Pokémon para usar cuando el usuario hace clic en una imagen
+   
     const defaultPokemonImages = [
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',  // Pikachu
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',   // Bulbasaur
@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png'  // Eevee
     ];
 
-    // Agregar un nuevo Pokémon
     addPokemonButton.addEventListener('click', () => {
         const name = pokemonNameInput.value.trim();
         let imageUrl = pokemonImageInput.value.trim();
@@ -27,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Si no se proporciona URL, usar una imagen aleatoria
+        
         if (!imageUrl) {
             const randomIndex = Math.floor(Math.random() * defaultPokemonImages.length);
             imageUrl = defaultPokemonImages[randomIndex];
         }
         
-        // Crear la tarjeta del Pokémon usando insertAdjacentHTML
+        
         const pokemonCardHTML = `
             <div class="pokemon-card">
                 <button class="delete-btn">X</button>
@@ -44,26 +43,26 @@ document.addEventListener('DOMContentLoaded', () => {
         
         pokemonGallery.insertAdjacentHTML('beforeend', pokemonCardHTML);
         
-        // Limpiar los campos del formulario
+        
         pokemonNameInput.value = '';
         pokemonImageInput.value = '';
         
-        // Agregar eventos a la nueva tarjeta
+       
         const newCard = pokemonGallery.lastElementChild;
         addCardEvents(newCard);
     });
 
-    // Función para agregar eventos a cada tarjeta de Pokémon
+    
     function addCardEvents(card) {
         const deleteBtn = card.querySelector('.delete-btn');
         const pokemonImage = card.querySelector('.pokemon-image');
         
-        // Evento para eliminar la tarjeta
+       
         deleteBtn.addEventListener('click', () => {
             card.remove();
         });
         
-        // Evento para reemplazar la imagen al hacer clic
+        
         pokemonImage.addEventListener('click', () => {
             const randomIndex = Math.floor(Math.random() * defaultPokemonImages.length);
             const newImage = document.createElement('img');
